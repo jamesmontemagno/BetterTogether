@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BetterTogether.Mobile.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Weather"
+    mc:Ignorable="d">
+    <ContentPage.ToolbarItems>
+        <!--<ToolbarItem Command="{Binding GetWeatherCommand}" Text="REFRESH" />-->
+    </ContentPage.ToolbarItems>
+    <Grid>
+        <StackLayout>
+            <ListView
+                CachingStrategy="RecycleElement"
+                HasUnevenRows="True"
+                ItemsSource="{Binding Items}"
+                SelectionMode="None"
+                SeparatorColor="Red"
+                SeparatorVisibility="None">
+                <d:ListView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Item One</x:String>
+                    </x:Array>
+                </d:ListView.ItemsSource>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                Margin="16,8"
+                                d:HasShadow="False"
+                                CornerRadius="20">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        d:Text="{Binding .}"
+                                        FontSize="Medium"
+                                        Text="{Binding DisplayDate}"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="{Binding Summary}"
+                                        VerticalOptions="Center" />
+                                    <StackLayout HorizontalOptions="End">
+                                        <Label FontSize="Medium" Text="{Binding TemperatureC, StringFormat='{0:N}°C'}" />
+                                        <Label FontSize="Medium" Text="{Binding TemperatureF, StringFormat='{0:N}°F'}" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Command="{Binding GetWeatherCommand}" Text="Get Weather" />
+        </StackLayout>
+        <ActivityIndicator
+            HorizontalOptions="CenterAndExpand"
+            IsRunning="{Binding IsBusy}"
+            IsVisible="{Binding IsBusy}"
+            VerticalOptions="Center" />
+    </Grid>
+
+</ContentPage>
