@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <OpenApiReference Include="..\..\..\..\Desktop\WeatherAPI.json">
+    <OpenApiReference Include="..\WeatherAPI.json">
       <CodeGenerator>NSwagCSharp</CodeGenerator>
       <Link>OpenAPIs\WeatherAPI.json</Link>
     </OpenApiReference>
