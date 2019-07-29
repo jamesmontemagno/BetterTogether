@@ -7,11 +7,11 @@ namespace BetterTogether.Shared
 {
     public partial class WeatherForecast
     {
-        //public DateTimeOffset Date { get; set; }
+        public DateTimeOffset Date { get; set; }
 
-        //public int TemperatureC { get; set; }
+        public int TemperatureC { get; set; }
 
-        //public string Summary { get; set; }
+        public string Summary { get; set; }
 
         [JsonIgnore]
         public string DisplayDate => Date.Date.ToShortDateString();

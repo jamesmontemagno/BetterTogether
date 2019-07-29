@@ -18,7 +18,7 @@
                 ItemsSource="{Binding Items}"
                 SelectionMode="None"
                 SeparatorColor="Red"
-                SeparatorVisibility="None">
+                SeparatorVisibility="Default">
                 <d:ListView.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Item One</x:String>
@@ -27,26 +27,23 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Frame
-                                Margin="16,8"
-                                d:HasShadow="False"
-                                CornerRadius="20">
-                                <StackLayout Orientation="Horizontal">
-                                    <Label
-                                        d:Text="{Binding .}"
-                                        FontSize="Medium"
-                                        Text="{Binding DisplayDate}"
-                                        VerticalOptions="Center" />
-                                    <Label
-                                        HorizontalOptions="CenterAndExpand"
-                                        Text="{Binding Summary}"
-                                        VerticalOptions="Center" />
-                                    <StackLayout HorizontalOptions="End">
-                                        <Label FontSize="Medium" Text="{Binding TemperatureC, StringFormat='{0:N}°C'}" />
-                                        <Label FontSize="Medium" Text="{Binding TemperatureF, StringFormat='{0:N}°F'}" />
-                                    </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    d:Text="{Binding .}"
+                                    FontSize="Medium"
+                                    Text="{Binding DisplayDate}"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    HorizontalOptions="CenterAndExpand"
+                                    Text="{Binding Summary}"
+                                    VerticalOptions="Center" />
+                                <StackLayout HorizontalOptions="End">
+                                    <Label FontSize="Small" 
+                                           Text="{Binding TemperatureC, StringFormat='{0:N}°C'}" />
+                                    <Label FontSize="Small" 
+                                           Text="{Binding TemperatureF, StringFormat='{0:N}°F'}" />
                                 </StackLayout>
-                            </Frame>
+                            </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
