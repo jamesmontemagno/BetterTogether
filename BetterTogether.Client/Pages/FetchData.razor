@@ -1,6 +1,7 @@
 ﻿@page "/fetchdata"
 @using BetterTogether.Shared
-@inject HttpClient Http
+@using System.Net.Http 
+@using System.Text.Json
 
 <h1>Weather forecast</h1>
 
@@ -38,8 +39,13 @@ else
 @code {
     WeatherForecast[] forecasts;
 
-    protected override async Task OnInitAsync()
+    protected override async Task OnInitializedAsync()
     {
-        forecasts = await Http.GetJsonAsync<WeatherForecast[]>("weatherforecast");
+        var client = new HttpClient();
+        var json = await client.GetStringAsync("http://localhost:51221/WeatherForecast");
+        forecasts = JsonSerializer.Deserialize<WeatherForecast[]>(json, new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        });
     }
 }
